@@ -27,7 +27,6 @@ public class CurrentWeatherService {
     private CurrentWeatherServiceHelper currentWeatherServiceHelper;
 
 
-
     public CurrentWeather getCurrentWeather(String cityName) {
         // We could use a url builder to have this url !!
         String url = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + API_KEY + "&units=" + UNIT;
@@ -38,6 +37,7 @@ public class CurrentWeatherService {
             JsonNode rootNode = mapper.readTree(response.getBody());
             CurrentWeather currentWeather = new CurrentWeather();
             currentWeatherServiceHelper.mapResponseToCurrentWeatherPOJO(currentWeather, rootNode);
+            currentWeatherRepository.save(currentWeather);
 
             return currentWeather;
         } catch (JsonProcessingException e) {
