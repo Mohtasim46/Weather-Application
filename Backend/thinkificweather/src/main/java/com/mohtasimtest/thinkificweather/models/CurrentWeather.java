@@ -22,10 +22,14 @@ public class CurrentWeather {
     private Double windSpeed;
     private Double windDeg;
     private Double windGust;
+    private Integer visibility;
     private Integer humidity;
     private Integer pressure;
     private Double currentTemperatureFeelsLike;
     private Double temperature;
+    private String weatherMain;
+    private String weatherDescription;
+    private String weatherIcon;
 
     public CurrentWeather() {
     }
@@ -118,6 +122,14 @@ public class CurrentWeather {
         this.windGust = windGust;
     }
 
+    public Integer getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(Integer visibility) {
+        this.visibility = visibility;
+    }
+
     public Integer getHumidity() {
         return humidity;
     }
@@ -148,5 +160,29 @@ public class CurrentWeather {
 
     public void setTemperature(Double temperature) {
         this.temperature = temperature;
+    }
+
+    public String getWeatherMain() {
+        return weatherMain;
+    }
+
+    public void setWeatherMain(String weatherMain) {
+        this.weatherMain = weatherMain;
+    }
+
+    public String getWeatherDescription() {
+        return weatherDescription;
+    }
+
+    public void setWeatherDescription(String weatherDescription) {
+        this.weatherDescription = weatherDescription;
+    }
+
+    public String getWeatherIcon() {
+        return weatherIcon;
+    }
+
+    public void setWeatherIcon(String weatherIcon) {
+        this.weatherIcon = weatherIcon;
     }
 }
