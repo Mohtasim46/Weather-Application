@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CurrentWeatherRepository extends CrudRepository<CurrentWeather, Long> {
 
+    CurrentWeather getWeatherByCityName(String cityName);
 }
