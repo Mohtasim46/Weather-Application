@@ -1,9 +1,23 @@
 package com.mohtasimtest.thinkificweather.services;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.mohtasimtest.thinkificweather.models.City;
 import com.mohtasimtest.thinkificweather.models.CurrentWeather;
-import org.springframework.stereotype.Component;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.time.Instant;
+
+import static com.mohtasimtest.thinkificweather.contracts.ApiContracts.NO_UPDATE_TIME;
+import static com.mohtasimtest.thinkificweather.contracts.ApiContracts.TIMEZONE_OFFSET;
 import static com.mohtasimtest.thinkificweather.contracts.WeatherContracts.*;
 import static com.mohtasimtest.thinkificweather.contracts.WeatherContracts.TEMPERATURE;
 
@@ -35,5 +49,24 @@ public class CurrentWeatherServiceHelper {
         currentWeather.setPressure(rootNode.path(MAIN).path(PRESSURE).asInt());
         currentWeather.setCurrentTemperatureFeelsLike(rootNode.path(MAIN).path(CURRENT_TEMPERATURE_FEELS_LIKE).asDouble());
         currentWeather.setTemperature(rootNode.path(MAIN).path(TEMPERATURE).asDouble());
+    }
+
+    public boolean isAlreadyUpdatedWithinTimeRange(Long lastUpdated) {
+        Long currentTime = Instant.now().getEpochSecond();
+        System.out.println(lastUpdated + " : " + currentTime);
+        LoggerFactory.getLogger(CurrentWeatherServiceHelper.class).info("The updated times {} -- {}", currentTime, lastUpdated);
+        if(currentTime - lastUpdated < NO_UPDATE_TIME) {
+            return true;
+        } else return false;
+    }
+
+    public City getCityEntity(CurrentWeather currentWeather) {
+        City city = new City();
+        city.setCityName(currentWeather.getCityName());
+        city.setCityIdentifier(currentWeather.getCityIdentifier());
+        city.setLastQueried(currentWeather.getDt());
+        city.setCountryCode(currentWeather.getCountryCode());
+
+        return city;
     }
 }
