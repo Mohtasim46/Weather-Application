@@ -1,6 +1,8 @@
 package com.mohtasimtest.thinkificweather.validator;
 
 import com.mohtasimtest.thinkificweather.models.Customer;
+import com.mohtasimtest.thinkificweather.services.CurrentWeatherServiceHelper;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -21,7 +23,8 @@ public class CustomerValidator implements Validator {
             errors.rejectValue("password", "length", "Password length must be at least 6 characters.");
         }
 
-        if(customer.getPassword().equals(customer.getConfirmPassword())) {
+        LoggerFactory.getLogger(CustomerValidator.class).info("Password comparison: {} -- {}", customer.getPassword(), customer.getConfirmPassword());
+        if(!customer.getPassword().equals(customer.getConfirmPassword())) {
             errors.rejectValue("confirmPassword", "Match", "Password must match");
         }
     }

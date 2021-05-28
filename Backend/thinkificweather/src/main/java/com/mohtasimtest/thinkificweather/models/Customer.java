@@ -75,6 +75,14 @@ public class Customer implements UserDetails {
         this.createdAt = createdAt;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -83,37 +91,25 @@ public class Customer implements UserDetails {
 
     @Override
     @JsonIgnore
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    @JsonIgnore
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    @JsonIgnore
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     @JsonIgnore
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     @JsonIgnore
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     @JsonIgnore
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
