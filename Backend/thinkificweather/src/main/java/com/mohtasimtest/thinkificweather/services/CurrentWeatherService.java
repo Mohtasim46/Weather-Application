@@ -13,11 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Locale;
-
 import static com.mohtasimtest.thinkificweather.contracts.ApiContracts.API_KEY;
 import static com.mohtasimtest.thinkificweather.contracts.ApiContracts.UNIT;
-import static com.mohtasimtest.thinkificweather.contracts.WeatherContracts.*;
 
 @Service
 public class CurrentWeatherService {
@@ -68,8 +65,8 @@ public class CurrentWeatherService {
             e.printStackTrace();
 
         } catch (Exception ex) {
-            throw new InvalidCityNameException( "The city with name " + cityName.toUpperCase()
-                    + " could not be found as a city on earth !!!");
+            throw new InvalidCityNameException( "The city with name '" + cityName.toUpperCase()
+                    + "' could not be found as a city on earth !!!");
         }
 
         return null;
