@@ -18,4 +18,11 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         InvalidCityNameExceptionResponse invalidCityNameExceptionResponse = new InvalidCityNameExceptionResponse(invalidCityNameException.getMessage());
         return new ResponseEntity(invalidCityNameExceptionResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleUsernameAlreadyExistsException(UsernameAlreadyExistsException usernameAlreadyExistsException,
+                                                                             WebRequest request) {
+        UsernameAlreadyExistsResponse usernameAlreadyExistsResponse = new UsernameAlreadyExistsResponse((usernameAlreadyExistsException.getMessage()));
+        return new ResponseEntity(usernameAlreadyExistsResponse, HttpStatus.BAD_REQUEST);
+    }
 }
