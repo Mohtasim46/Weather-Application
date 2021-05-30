@@ -1,7 +1,6 @@
 package com.mohtasimtest.thinkificweather.validator;
 
 import com.mohtasimtest.thinkificweather.models.Customer;
-import com.mohtasimtest.thinkificweather.services.CurrentWeatherServiceHelper;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

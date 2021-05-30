@@ -8,14 +8,17 @@
 		<version>2.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.mohtasimtest</groupId>
 	<artifactId>thinkificweather</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>thinkificweather</name>
+
 	<description>This is a take home test project for thinkific</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

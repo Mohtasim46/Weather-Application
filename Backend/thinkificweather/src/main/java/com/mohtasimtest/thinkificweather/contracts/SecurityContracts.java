@@ -8,6 +8,6 @@ public class SecurityContracts {
     public static final String SECRET_KEY = "SecretKeyToGenerateJWTs";
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_STRING = "Authorization";
-    public static final long EXPIRATION_TIME = 120_000;
+    public static final long EXPIRATION_TIME = 604800_000; // Auth token will be valid for 7 days
 
 }

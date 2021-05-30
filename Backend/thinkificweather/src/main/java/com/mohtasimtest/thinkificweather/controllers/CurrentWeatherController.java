@@ -7,7 +7,6 @@ import com.mohtasimtest.thinkificweather.services.ErrorValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +19,8 @@ public class CurrentWeatherController {
     @Autowired
     private CurrentWeatherService currentWeatherService;
 
-    @Autowired
-    private ErrorValidationService errorValidationService;
-
     @GetMapping("/{cityName}")
-    public ResponseEntity<?> getCurrentWeatherByCity(@PathVariable String cityName) {
+    public ResponseEntity<?> getCurrentWeatherByCity(@PathVariable("cityName") String cityName) {
 
         CurrentWeather currentWeather = currentWeatherService.getCurrentWeather(cityName);
 
