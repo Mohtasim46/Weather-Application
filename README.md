@@ -146,3 +146,4 @@ The string that starts with Bearer within double quote is the auth jwt token. It
     "weatherIcon": "01d"
 }
 ```
+
