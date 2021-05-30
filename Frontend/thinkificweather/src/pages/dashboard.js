@@ -15,29 +15,51 @@ class Dashboard extends Component {
 
         this.state = {
             error: false,
-            isEmpty: true,
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.errors) {
             this.setState({ error: nextProps.errors.error_message?true:false });
-            this.setState({ isEmpty: false });
-        }
-
-        if(nextProps.weather) {
-            this.setState({ isEmpty: false});
         }
     }
+
+    dashboardMessage = (message, icon) => (
+        <div className="container">
+                        <NotFoundWrapper>
+                            <NotfoundIcon>
+                                <FontAwesomeIcon icon={icon} />
+                            </NotfoundIcon>
+                            <NotFoundText>{message}</NotFoundText>
+                        </NotFoundWrapper>
+                    </div>
+    );
 
     render() {
 
         const {weather} = this.props.weather;
         const {errors} = this.props;
+
+        let dashboardContent;
+        
+        const errorContent = (this.dashboardMessage(errors.error_message, faFrown));
+        
+        const neutralContent = (this.dashboardMessage('Please enter a city name fron earth to get the current weather !', faGrinAlt));
+
+        if(errors && errors.error_message != null) {
+            dashboardContent = errorContent;
+        } else if(weather && weather.cityName != null) {
+            dashboardContent = (<Weatherdescription weather={weather} />);
+        } else {
+            dashboardContent = neutralContent;
+        }
+
         return (
             <div>
                 <Searchbar />
-                {this.state.error && errors && 
+                {
+                    dashboardContent
+                    /* {this.state.error && errors && 
                     (<div className="container">
                         <NotFoundWrapper>
                             <NotfoundIcon>
@@ -47,8 +69,8 @@ class Dashboard extends Component {
                         </NotFoundWrapper>
                     </div>)
                 }
-                {!this.state.error && !this.state.isEmpty && weather && <Weatherdescription weather={weather} />}
-                {this.state.isEmpty && !this.state.error && (
+                {!this.state.error && weather && <Weatherdescription weather={weather} />}
+                {(!this.state.error || weather.cityName.length() > 0) && (
                     <div className="container">
                         <NotFoundWrapper>
                             <NotfoundIcon>
@@ -57,7 +79,7 @@ class Dashboard extends Component {
                             <NotFoundText>Please enter a city name fron earth to get the current weather !</NotFoundText>
                         </NotFoundWrapper>
                     </div>
-                )}
+                )} */}
             </div>
             
         )
