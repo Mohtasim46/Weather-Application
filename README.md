@@ -5,7 +5,6 @@ This repository holds the solution of the take home test for thinkific's softwar
 May 31, 2021
 
 ### Location of deployed application
-<<<<<<< HEAD
 
 If applicable, please provide the url where we can find and interact with your running application.
 This is the backend spring boot application URL hosted in aws. I am providing the api and expected request body example here.
@@ -23,14 +22,12 @@ http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/
 http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/customers/login
 ** make sure to add content-type: application/json in the header.
 ```
-http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/customers/login
-** make sure to add content-type: application/json in the header.
-```
 {
     "password": "password",
     "username": "mohtasim@bellah.com"
 }
 ```
+
 The response body will contain the Authorization token named as 'token' in the json response.
 http://Thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/weather/{cityName}
 Hit this api endpoint to get the current weather of your desired city.
@@ -40,10 +37,7 @@ Hit this api endpoint to get the current weather of your desired city.
 Around 13 hours in total for 3 days. 2 more extra hours for hosting.
 
 ### Assumptions made
-<<<<<<< HEAD
 
-=======
->>>>>>> Update README.md
 1. Well, using the real api from https://openweathermap.org/api, it felt like that I'm building a proxy server. The city weather api required a api key. I assumed that it is okay to use the same api_key for all users who will use my server since it won't affect the user end.
 2. To complete the stretch goals to some extent, I tried to build a UI. Since I dont have a gui guide or something, I tried to take ideas from different weather forecasting websites and took some of their stylings. 
 3. Since the test was to get only current weather for a city, I didn't take any hourly/daily/weekly/monthly weather forecast predictions. 
@@ -71,7 +65,6 @@ If applicable, use this area to tell us what stretch goals you attempted. What w
 I am having a bit of difficulty hosting or deploying my react app separately in aws as I haven't done it before right now.
 I wish I didn't make those compromises.
 
-<<<<<<< HEAD
 The development goals went well but I struggled in deployment. I successfully deployed the backend service connected to a cloud mysql (AWS RDS) but struggled to deploy the frontend.
 But If you run the frontend app locally it will be able to hit the deployed cloud backend api to operate in you machine.
 
@@ -79,47 +72,30 @@ But If you run the frontend app locally it will be able to hit the deployed clou
 
 Please find the instructions to test the backend API in the HOWTO_README.md 
 But to run the application locally,
-=======
-### Instructions to run assignment locally
->>>>>>> Update README.md
 To test the backend api,
 1. Download and install postman in your machine. 
 2. Then follow the above instruction. For ease of viewing, I am providing the instructions below again - 
 
 This is the backend spring boot application URL hosted in aws. I am providing the api and expected request body example here.
-<<<<<<< HEAD
 POST to http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/customers/register
 ```
-=======
-http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/customers/register
->>>>>>> Update README.md
 {
     "username": "mohtasim@bellah.com",
     "fullName": "Mohtasim Bellah",
     "password": "password",
     "confirmPassword": "password"
 }
-<<<<<<< HEAD
 ```
 POST to http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/customers/login
 ** make sure to add content-type: application/json in the header.
 ```
-=======
-http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/customers/login
-** make sure to add content-type: application/json in the header.
->>>>>>> Update README.md
 {
     "password": "password",
     "username": "mohtasim@bellah.com"
 }
-<<<<<<< HEAD
 ```
 The response body will contain the Authorization token named as 'token' in the json response.
 POST to http://Thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/weather/{cityName}
-=======
-The response body will contain the Authorization token named as 'token' in the json response.
-http://Thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/weather/{cityName}
->>>>>>> Update README.md
 Hit this api endpoint to get the current weather of your desired city.
 ** Make sure to use the token received upon login in your header as 'Authorization: {token}'
 
@@ -147,11 +123,7 @@ The reason to avoid multiple hit in the https://openweathermap.org/ endpoint is 
 Here is my custom json response for hitting http://Thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/weather/seattle 
 The jwt token included in the header is - { Authorization: "Bearer eyJhbGciOiJIUzUxMiJ9.eyJmdWxsTmFtZSI6Ik1vaHRhc2ltIEJlbGxhaCIsImlkIjoiMiIsImV4cCI6MTYyMzAwMDI1MywiaWF0IjoxNjIyMzk1NDUzLCJ1c2VybmFtZSI6Im1vaHRhc2ltQGJlbGxhaC5jb20ifQ.NZO5hsY_BYUpqNOD9PceIjy92NMcZQg5ud3S4VlXE7nai9HJtqgTAS_Ee4991HTuXL2OC7bLBvMUHBZl39LWJw" } .
 The string that starts with Bearer within double quote is the auth jwt token. It is valid for 7 days.
-<<<<<<< HEAD
 ```
-=======
-
->>>>>>> Update README.md
 {
     "id": 4,
     "cityName": "Seattle",
@@ -173,8 +145,4 @@ The string that starts with Bearer within double quote is the auth jwt token. It
     "weatherDescription": "clear sky",
     "weatherIcon": "01d"
 }
-<<<<<<< HEAD
 ```
-
-=======
->>>>>>> Update README.md
