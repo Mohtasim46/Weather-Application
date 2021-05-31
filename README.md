@@ -1,6 +1,20 @@
 # Thinkific-Test
 This repository holds the solution of the take home test for thinkific's software engineer role.
 
+### Tech Stack
+I have used reactjs for the frontend and spring-boot for the backend development with mysql as database.
+I have used aws cloud services RDS & Beanstalk to host the full stack application.
+
+First I hosted only the backend service with mysql here: http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/
+The api endpoint descriptions are given below with expected request body or payload.
+
+Then I hosted the fullstack service here separately: 
+```
+http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/
+```
+
+So you may two different links in the api documentation.
+
 ### Date
 May 31, 2021
 
@@ -45,6 +59,7 @@ If applicable. Did you do something that you feel could have been done better in
 3. In the real-world application, there could have been other parameters to search for a city weather such as lattitude, longitude or picking up city from the world map maybe.
 4. In real-world, each different user should have different api_key for hitting openweather endpoint.
 5. I haven’t handled in case of ‘no-internet’ or incase if the ‘AWS RDS’ instance is terminated.
+6. I haven't handled the frontend views for mobile devices as well.
 
 
 ### Stretch goals attempted
