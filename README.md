@@ -7,34 +7,26 @@ May 31, 2021
 ### Location of deployed application
 
 If applicable, please provide the url where we can find and interact with your running application.
-This is the backend spring boot application URL hosted in aws. I am providing the api and expected request body example here.
 
-http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/customers/register
+This is the fullstack spring boot, react application URL hosted in aws. 
+
+The URL: 
+
 ```
-{
-    "username": "mohtasim@bellah.com",
-    "fullName": "Mohtasim Bellah",
-    "password": "password",
-    "confirmPassword": "password"
-}
+http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/
 ```
 
-http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/customers/login
-** make sure to add content-type: application/json in the header.
-```
+Hit this api endpoint to register yourself and get the current weather of your desired city.
+
+Existing username, password:  ```
 {
     "password": "password",
     "username": "mohtasim@bellah.com"
 }
 ```
 
-The response body will contain the Authorization token named as 'token' in the json response.
-http://Thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/weather/{cityName}
-Hit this api endpoint to get the current weather of your desired city.
-** Make sure to use the token received upon login in your header as 'Authorization: {token}'
-
 ### Time spent
-Around 13 hours in total for 3 days. 2 more extra hours for hosting.
+Around 13 hours in total for 3 days. 4 more extra hours for hosting.
 
 ### Assumptions made
 
@@ -52,6 +44,8 @@ If applicable. Did you do something that you feel could have been done better in
 2. In the authentication, oAuth could be added for authentication.
 3. In the real-world application, there could have been other parameters to search for a city weather such as lattitude, longitude or picking up city from the world map maybe.
 4. In real-world, each different user should have different api_key for hitting openweather endpoint.
+5. I haven’t handled in case of ‘no-internet’ or incase if the ‘AWS RDS’ instance is terminated.
+
 
 ### Stretch goals attempted
 If applicable, use this area to tell us what stretch goals you attempted. What went well? What do you wish you could have done better? If you didn't attempt any of the stretch goals, feel free to let us know why.
@@ -62,11 +56,11 @@ If applicable, use this area to tell us what stretch goals you attempted. What w
 4. I have deployed my API and the api paths are given above in this document.
 5. I have used a real weather API via your service to fetch the actual weather. I have used https://openweathermap.org/ as my data source as suggested.
 
-I am having a bit of difficulty hosting or deploying my react app separately in aws as I haven't done it before right now.
-I wish I didn't make those compromises.
+I was having a bit of difficulty hosting or deploying my react app separately in aws as I haven't done it before.
+
+But I managed to do it anyway.
 
 The development goals went well but I struggled in deployment. I successfully deployed the backend service connected to a cloud mysql (AWS RDS) but struggled to deploy the frontend.
-But If you run the frontend app locally it will be able to hit the deployed cloud backend api to operate in you machine.
 
 ### Instructions to run assignment locally
 
@@ -77,7 +71,7 @@ To test the backend api,
 2. Then follow the above instruction. For ease of viewing, I am providing the instructions below again - 
 
 This is the backend spring boot application URL hosted in aws. I am providing the api and expected request body example here.
-POST to http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/customers/register
+POST to http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/api/customers/register
 ```
 {
     "username": "mohtasim@bellah.com",
@@ -86,7 +80,7 @@ POST to http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.
     "confirmPassword": "password"
 }
 ```
-POST to http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/customers/login
+POST to http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/api/customers/login
 ** make sure to add content-type: application/json in the header.
 ```
 {
@@ -116,13 +110,13 @@ Yes. I haven't been able to deploy the reactjs app in the aws. Well, I have depl
 ### Other information about your submission that you feel it's important that we know if applicable.
 
 Well, I just didn't use https://openweathermap.org/ API to get the current weather and converted the response from https://openweathermap.org/ to my own custom response. 
+
 https://openweathermap.org/ provides same response for a city within 10 minutes. They only update the values every 10 minute. So what I did was, I cached the response and request time of the user for a city in the database. So if a user requests couple of times within 10 minutes, I avoided to hit the https://openweathermap.org/ api and provided the previous response I saved in the database.
 
 The reason to avoid multiple hit in the https://openweathermap.org/ endpoint is just to speed up my restapi's response time. 
 
-Here is my custom json response for hitting http://Thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/weather/seattle 
-The jwt token included in the header is - { Authorization: "Bearer eyJhbGciOiJIUzUxMiJ9.eyJmdWxsTmFtZSI6Ik1vaHRhc2ltIEJlbGxhaCIsImlkIjoiMiIsImV4cCI6MTYyMzAwMDI1MywiaWF0IjoxNjIyMzk1NDUzLCJ1c2VybmFtZSI6Im1vaHRhc2ltQGJlbGxhaC5jb20ifQ.NZO5hsY_BYUpqNOD9PceIjy92NMcZQg5ud3S4VlXE7nai9HJtqgTAS_Ee4991HTuXL2OC7bLBvMUHBZl39LWJw" } .
-The string that starts with Bearer within double quote is the auth jwt token. It is valid for 7 days.
+Here is my custom json response for hitting http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/api/weather/seattle 
+
 ```
 {
     "id": 4,
