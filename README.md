@@ -32,7 +32,9 @@ http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/
 
 Hit this api endpoint to register yourself and get the current weather of your desired city.
 
-Existing username, password:  ```
+Existing username, password:
+
+```
 {
     "password": "password",
     "username": "mohtasim@bellah.com"
