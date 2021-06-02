@@ -13,7 +13,7 @@ Then I hosted the fullstack service here separately:
 http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/
 ```
 
-So you may two different links in the api documentation.
+So I have two different links in the api documentation.
 
 ### Date
 May 31, 2021
