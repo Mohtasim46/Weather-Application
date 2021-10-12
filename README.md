@@ -1,19 +1,5 @@
-# Thinkific-Test
-This repository holds the solution of the take home test for thinkific's software engineer role.
-
 ### Tech Stack
 I have used reactjs for the frontend and spring-boot for the backend development with mysql as database.
-I have used aws cloud services RDS & Beanstalk to host the full stack application.
-
-First I hosted only the backend service with mysql here: http://thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/
-The api endpoint descriptions are given below with expected request body or payload.
-
-Then I hosted the fullstack service here separately: 
-```
-http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/
-```
-
-So I have two different links in the api documentation.
 
 ### Date
 May 31, 2021
@@ -22,13 +8,7 @@ May 31, 2021
 
 If applicable, please provide the url where we can find and interact with your running application.
 
-This is the fullstack spring boot, react application URL hosted in aws. 
-
-The URL: 
-
-```
-http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/
-```
+This is the fullstack spring boot, react application.
 
 Hit this api endpoint to register yourself and get the current weather of your desired city.
 
@@ -87,8 +67,8 @@ To test the backend api,
 1. Download and install postman in your machine. 
 2. Then follow the above instruction. For ease of viewing, I am providing the instructions below again - 
 
-This is the backend spring boot application URL hosted in aws. I am providing the api and expected request body example here.
-POST to http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/api/customers/register
+This is the backend spring boot application. I am providing the api and expected request body example here.
+POST to your local server after running the server application.
 ```
 {
     "username": "mohtasim@bellah.com",
@@ -97,7 +77,7 @@ POST to http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com
     "confirmPassword": "password"
 }
 ```
-POST to http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/api/customers/login
+POST to your local server after running the server application.
 ** make sure to add content-type: application/json in the header.
 ```
 {
@@ -106,8 +86,8 @@ POST to http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com
 }
 ```
 The response body will contain the Authorization token named as 'token' in the json response.
-POST to http://Thinkifictestweather-env.eba-un42ghmt.us-east-2.elasticbeanstalk.com/api/weather/{cityName}
-Hit this api endpoint to get the current weather of your desired city.
+
+Hit the api endpoint to get the current weather of your desired city.
 ** Make sure to use the token received upon login in your header as 'Authorization: {token}'
 
 3. If you want to run the spring-boot application, 
@@ -132,7 +112,7 @@ https://openweathermap.org/ provides same response for a city within 10 minutes.
 
 The reason to avoid multiple hit in the https://openweathermap.org/ endpoint is just to speed up my restapi's response time. 
 
-Here is my custom json response for hitting http://thinkificweather-env.eba-v4bi3twu.ap-south-1.elasticbeanstalk.com/api/weather/seattle 
+Here is my custom json response for hitting {local server address}/api/weather/seattle 
 
 ```
 {
